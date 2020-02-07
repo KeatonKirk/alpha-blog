@@ -11,10 +11,8 @@
 
   <body>
     <% unless flash.empty? %>
-      <%= flash.each do |name, msg| %>
-        <ul>
-          <li><%= msg %> </li>
-        </ul>
+      <% flash.each do |name, msg| %>
+      <h3 style="color:blue" class="notice"> <%= msg %> </h3>
       <% end %>
     <% end %>
     <%= yield %>
