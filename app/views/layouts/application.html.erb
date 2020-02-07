@@ -10,10 +10,12 @@
   </head>
 
   <body>
-    <%= flash.each do |name, msg| %>
-      <ul>
-        <li><%= msg %> </li>
-      </ul>
+    <% unless flash.empty? %>
+      <%= flash.each do |name, msg| %>
+        <ul>
+          <li><%= msg %> </li>
+        </ul>
+      <% end %>
     <% end %>
     <%= yield %>
   </body>
