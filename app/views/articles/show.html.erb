@@ -1,9 +1,12 @@
 <h1> Showing Selected Article:</h1>
+<h3>
+  <em><%= @article.title %></em>
+</h3>
 
 <p>
-  Title: <%= @article.title %>
+  <%= @article.description %>
 </p>
+<button><%= link_to 'Edit', edit_article_path %></button><br><hr>
 
-<p>
-  Description: <%= @article.description %>
-</p>
+<button><%= link_to 'Home', root_path %></button><br>
+<button><%= link_to 'Articles', articles_path %></button>

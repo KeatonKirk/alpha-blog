@@ -18,6 +18,10 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def index
+    @index = Article.all
+  end
+
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)

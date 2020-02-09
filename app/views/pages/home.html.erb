@@ -6,15 +6,35 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      border-radius: 12px;
+      height: 375px;
+      width: 80%;
+    }
+    button {
+      background-color: powderblue;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 12px;
+      display: inline-block;
     }
     </style>
   </head>
   <body>
-    <h1 style="font-family:verdana; text-align:center">Welcome to my Webpage!</h1>
-    <%= image_tag 'skyline.jpg' %>
-    <%= link_to 'About', about_path %>
+    <h1 style="font-family:verdana; text-align:center">Welcome to Alpha Blog!</h1>
+    <%= image_tag 'skyline.jpg' %> <br>
+    <button style="font-size:135%"><%= link_to 'New Article', new_article_path %></button>
+    <br>
+    <br>
+    <ul>
+      <li style="font-size:125%"><%= link_to 'About', about_path %></li>
+      <li style="font-size:125%"><%= link_to 'Articles', articles_path %></li>
+    </ul>
     <hr>
-    <p>SSH Git Test</p>
     <section style="background-color:powderblue">
       <p style="float:left; width:50%;">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -38,8 +58,6 @@
         pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat
         in, orci. In hac habitasse platea dictumst.</p>
     </section>
-      <button style="float:left; clear:left">Nav Button</button>
-      <button style="float:right; clear:right">Nav Button</button>
       <footer style="clear:left; clear:right; text-align:center">Webpage Footer</footer>
   </body>
 </html>

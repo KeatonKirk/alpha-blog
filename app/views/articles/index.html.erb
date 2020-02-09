@@ -1,0 +1,9 @@
+<h1>List of all Articles</h1>
+<button><%= link_to 'Home', root_path %></button><br>
+<hr>
+
+<% Article.all.each do |article| %>
+  <ul>
+    <li> <%= link_to article.title, article %>  </li>
+  </ul>
+  <% end %>
