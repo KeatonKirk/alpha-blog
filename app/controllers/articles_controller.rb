@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  def index
+    @index = Article.all
+  end
+
   def new
     @article = Article.new
   end
@@ -16,10 +20,6 @@ class ArticlesController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def index
-    @index = Article.all
   end
 
   def update
