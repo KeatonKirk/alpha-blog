@@ -20,3 +20,31 @@
 .navbar {
   background-color: powderblue;
 }
+
+.jumbotron {
+  background-image: asset-url('skyline.jpg')
+}
+
+.jumbotron h1 {
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+.footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
