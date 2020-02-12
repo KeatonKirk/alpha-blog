@@ -1,5 +1,7 @@
 <% unless flash.empty? %>
   <% flash.each do |name, msg| %>
-  <h3 style="color:blue" class="notice"> <%= msg %> </h3>
+  <div class="alert alert-primary" role="alert">
+  <%= msg %>
+</div>
   <% end %>
 <% end %>
