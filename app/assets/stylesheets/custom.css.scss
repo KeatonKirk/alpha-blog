@@ -9,7 +9,7 @@
 }
 
 #logo:hover {
-  color: #0066ff;
+  color: #0000e6;
   text-decoration: none;
 }
 
@@ -22,11 +22,16 @@
 }
 
 .jumbotron {
-  background-image: asset-url('skyline.jpg')
+  background-image: asset-url('boston_2000x.jpg');
+  height: 500px;
 }
 
 .jumbotron h1 {
   font-weight: bold;
+  color: powderblue;
+}
+.jumbotron p {
+  color: powderblue;
 }
 
 .footer {
