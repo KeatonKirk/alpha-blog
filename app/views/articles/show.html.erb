@@ -1,9 +1,6 @@
-<h1> Showing Selected Article:</h1>
-<h3>
-  <em><%= @article.title %></em>
-</h3>
+<h1 class="h1"><%= @article.title %></h1>
 
-<p>
+<p class="lead">
   <%= @article.description %>
 </p>
-<button><%= link_to 'Edit', edit_article_path %></button><br><hr>
+<button class="btn btn-outline-primary btn-md"><%= link_to 'Edit', edit_article_path %></button><br>
