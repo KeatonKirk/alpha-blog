@@ -1,12 +1,10 @@
-<h1>List of all Articles</h1>
-<button class="btn btn-outline-primary btn-md"><%= link_to 'New Article', new_article_path %></button>
+<h1 align="center">List of all Articles</h1>
+
 
 <table class="table table-hover">
   <tr>
     <th scope="col">Title</th>
     <th scope="col">Description</th>
-    <th scope="col">Edit</th>
-    <th scope="col">DELETE</th>
   </tr>
     <% @index.each do |article| %>
       <tr>
@@ -18,3 +16,5 @@
       </tr>
     <% end %>
   </table>
+
+<button class="btn btn-outline-primary btn-md"><%= link_to 'New Article', new_article_path %></button>
