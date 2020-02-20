@@ -1,6 +1,12 @@
 <h1 class="h1"><%= @article.title %></h1>
 
-<p class="lead">
-  <%= @article.description %>
+<p>
+  <%= simple_format(@article.description, :class => 'lead') %>
 </p>
-<button class="btn btn-outline-primary btn-md"><%= link_to 'Edit', edit_article_path %></button><br>
+<button class="btn btn-outline-primary btn-md"><%= link_to 'Edit', edit_article_path %></button><br><br>
+<div class="article-actions">
+  <%= link_to "View all Articles", articles_path, class: "btn btn-xs btn-success" %>
+  <%= link_to "Delete this article", article_path(@article), method: :delete,
+            data: {confirm: "Are you sure you want to delete the article?"},
+            class: "btn btn-xs btn-danger" %>
+</div>
