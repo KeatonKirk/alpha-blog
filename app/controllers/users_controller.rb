@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-        flash[:notice] = "User was successfully created!"
+        flash[:notice] = "Welcome to the Alpha Blog #{@user.username}"
         redirect_to user_path(@user)
       else
         render 'new'
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :email, :password)
   end
 end
 
