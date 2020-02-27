@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  #@index = Articles.all
   def new
     @user = User.new
   end
