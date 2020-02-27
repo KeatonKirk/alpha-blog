@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  #@index = Articles.all
   def new
     @user = User.new
   end
@@ -15,11 +16,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    set_user
   end
 
   def update
-    @user = User.find(params[:id])
+    set_user
     if @user.update(user_params)
       flash[:success] = "Your account was updated successfully"
       redirect_to user_path(@user)
@@ -37,8 +38,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
-end
 
-def set_user
-  @user = User.find(params[:id])
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+
 end
