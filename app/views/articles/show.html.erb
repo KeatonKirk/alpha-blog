@@ -1,5 +1,18 @@
-<h1 class="h1"><%= @article.title %></h1>
-
+<h1 class="center"><%= @article.title %></h1>
+<div class="center">
+<% if @article.user %>
+<ul class="listing" align="center">
+  <div class="center">
+    <div class="well">
+      <li>Created by:</li>
+      <li><%= link_to gravatar_for(@article.user), user_path(@article.user) %></li>
+      <li class="articel-title">
+        <%= link_to @article.user.username, user_path(@article.user) %></li>
+      <li><small><%= pluralize(@article.user.articles.count, "article")  %></small></li>
+    </div>
+  </div>
+</ul>
+<% end %>
 <p>
   <%= simple_format(@article.description, :class => 'lead') %>
 </p>
@@ -9,4 +22,5 @@
   <%= link_to "Delete this article", article_path(@article), method: :delete,
             data: {confirm: "Are you sure you want to delete the article?"},
             class: "btn btn-xs btn-danger" %>
+</div>
 </div>
