@@ -8,4 +8,10 @@
 <nav class="pagination justify-content-center" >
   <%= will_paginate @user_articles %>
 </nav>
-<%= render 'articles/article', obj: @user_articles %>
+<% if @user.articles.empty? %>
+  <div align="center">
+    <button class="btn btn-outline-primary btn-md"><%= link_to 'Create an Article!', new_article_path %></button>
+  </div>
+  <% else %>
+    <%= render 'articles/article', obj: @user_articles %>
+<% end %>

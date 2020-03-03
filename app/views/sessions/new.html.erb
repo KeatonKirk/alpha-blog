@@ -1,0 +1,18 @@
+<h1 align="center">Log in</h1>
+
+<%= form_for(:session, url: login_path) do |f| %>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Email</label>
+    <%= f.email_field :email, class: "form-control", id: "exampleFormControlInput1",
+                      placeholder: "Enter email" %>
+
+    <label for='title'>Password</label>
+    <%= f.password_field :password, class: "form-control", id: "exampleFormControlInput1",
+                      autocomplete: "off" %>
+  </div>
+  <%= f.submit "Log in", class: 'btn btn-primary btn-lg' %>
+<% end %>
+<div class='center' padding-top='50px'>
+  [ <%= link_to "Cancel request and return to articles listing", articles_path %> ]
+</div>
