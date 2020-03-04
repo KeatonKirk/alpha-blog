@@ -12,6 +12,7 @@
       <li class="nav-item">
         <%= link_to "Articles", articles_path, class: "nav-link" %>
       </li>
+    <% if logged_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Actions
@@ -23,8 +24,34 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+    <% if logged_in? %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Your Profile
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+      </div>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Log Out", logout_path, method: :delete, class: "nav-link" %>
+    </li>
+      <% else %>
       <li class="nav-item">
-        <%= link_to "Log Out", logout_path, method: :delete, class: "nav-link" %>
+        <%= link_to "Log in", login_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item ml-auto">
+        <%= link_to "Sign Up", signup_path, class: "nav-link" %>
+      <% end %>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

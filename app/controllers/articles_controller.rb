@@ -9,7 +9,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    set_article
   end
 
   def create
@@ -24,24 +23,29 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    set_article
-    if @article.update(article_params)
+    if @article.update(article_params) && @article.user_id == session[:user_id]
       flash[:success] = "Article was successfully updated!"
       redirect_to article_path(@article)
+    elsif @article.user_id != session[:user_id] && @article.errors.empty?
+      flash[:danger] = "You must be the article owner to make an edit!"
+      render 'edit'
     else
       render 'edit'
     end
   end
 
   def show
-    set_article
   end
 
   def destroy
-    set_article
-    @article.destroy
-    flash[:danger] = "Article was successfully deleted."
-    redirect_to articles_path
+    if @article.user_id == session[:user_id]
+      @article.destroy
+      flash[:danger] = "Article was successfully deleted."
+      redirect_to articles_path
+    else
+      flash[:danger] = "You must be the article owner to delete it!"
+      render 'show'
+    end 
   end
 
   private
