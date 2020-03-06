@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)
   end
@@ -23,14 +25,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(article_params) && @article.user_id == session[:user_id]
+    if @article.update(article_params)
       flash[:success] = "Article was successfully updated!"
       redirect_to article_path(@article)
-    elsif @article.user_id != session[:user_id] && @article.errors.empty?
-      flash[:danger] = "You must be the article owner to make an edit!"
-      render 'edit'
-    else
-      render 'edit'
     end
   end
 
@@ -38,16 +35,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if @article.user_id == session[:user_id]
-      @article.destroy
-      flash[:danger] = "Article was successfully deleted."
-      redirect_to articles_path
-    else
-      flash[:danger] = "You must be the article owner to delete it!"
-      render 'show'
-    end 
+    @article.destroy
+    flash[:danger] = "Article was successfully deleted."
+    redirect_to articles_path
   end
-
   private
 
   def set_article
@@ -55,6 +46,12 @@ class ArticlesController < ApplicationController
   end
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+  def require_same_user
+    if current_user != @article.user
+      flash[:danger] = "You can only edit or delete your own article!"
+      redirect_to root_path
+    end
   end
 
 end

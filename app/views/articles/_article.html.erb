@@ -8,10 +8,12 @@
         <td><%= link_to article.title, article %></td>
         <td style="overflow: hidden; text-overflow: ellipsis;"><%= article.description %></td>
         <td>Created by: <%= article.user.username if article.user %></td>
+        <% if logged_in? && current_user == article.user %>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td> | </td>
         <td style="text-align:center"> <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
+      <% end %>
     <% end %>
   </table>
 
