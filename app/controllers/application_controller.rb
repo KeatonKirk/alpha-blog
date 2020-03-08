@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search_results
-    unless params[:q].nil?
+    unless params[:q].nil? || params[:q].empty?
       @results = []
       Article.all.each do |article|
         @results << article if article.title.downcase.include?(params[:q]) ||
