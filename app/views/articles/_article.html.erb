@@ -24,4 +24,8 @@
     </div
   </div>
 <% end %>
-<button class="btn btn-outline-primary btn-md"><%= link_to 'New Article', new_article_path %></button>
+<% if logged_in? %>
+  <div align="center">
+    <button class="btn btn-outline-primary btn-md"><%= link_to 'New Article', new_article_path %></button>
+  </div>
+<% end %>

@@ -17,17 +17,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def search_results
+  def search_results(obj)
     unless params[:q].nil? || params[:q].empty?
       @input = params[:q].downcase
       @results = []
-      Article.all.each do |article|
-        @results << article if article.title.downcase.include?(@input) ||
-           article.description.downcase.include?(@input)
+      if @users
+      obj.each do |user|
+        @results << user if user.username.downcase.include?(@input)
        end
        @results
+      else
+        obj.each do |article|
+          @results << article if article.title.downcase.include?(@input) ||
+             article.description.downcase.include?(@input)
+         end
+         @results
+     end
     else
-      Article.paginate(page: params[:page], per_page: 5)
+      obj.paginate(page: params[:page], per_page: 5)
     end
   end
 end

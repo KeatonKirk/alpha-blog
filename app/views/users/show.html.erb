@@ -5,7 +5,10 @@
   </div>
 
 <h4 align="center"> <%= @user.username %>'s Articles </h4>
-<%= render 'articles/article', obj: @user_articles %>
-<nav class="pagination justify-content-center" >
+<div align="center">
+  <%= link_to 'Back to Users', users_path, class: "btn btn-secondary" %>
+</div>
+<%= render 'articles/article', obj: search_results(@user_articles) %>
+<nav class="pagination justify-content-center">
   <%= will_paginate @user_articles %>
 </nav>

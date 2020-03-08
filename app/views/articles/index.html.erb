@@ -1,5 +1,5 @@
 <h1 class="display-2" align="center">Articles</h1>
-<%= render 'article', obj: search_results %>
+<%= render 'article', obj: search_results(Article.all) %>
 <br>
 <br>
 <nav class="pagination justify-content-center" >
