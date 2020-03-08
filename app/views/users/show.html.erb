@@ -13,5 +13,5 @@
     <button class="btn btn-outline-primary btn-md"><%= link_to 'Create an Article!', new_article_path %></button>
   </div>
   <% else %>
-    <%= render 'articles/article', obj: @user_articles %>
+    <%= render 'articles/article', obj: search_results %>
 <% end %>
