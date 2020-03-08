@@ -1,20 +1,49 @@
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0">
+      <%= form_with(url: articles_path, method: "get", class: "form-inline my-2 my-lg-0") do %>
+        <%= label_tag(:q, "Search Articles") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+  </div>
+</nav>
+
 <table class="table">
   <tr>
     <th scope="col">Title</th>
     <th scope="col">Description</th>
   </tr>
-    <% obj.each do |article| %>
-      <tr>
-        <td><%= link_to article.title, article %></td>
-        <td style="overflow: hidden; text-overflow: ellipsis;"><%= article.description %></td>
-        <td>Created by: <%= article.user.username if article.user %></td>
-        <% if logged_in? && current_user == article.user %>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td> | </td>
-        <td style="text-align:center"> <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
+    <% if @search_value %>
+      <% obj.each do |article| %>
+        <% if article.title.include?(@search_value) || article.description.include?(@search_value) %>
+        <tr>
+          <td><%= link_to article.title, article %></td>
+          <td style="overflow: hidden; text-overflow: ellipsis;"><%= article.description %></td>
+          <td>Created by: <%= article.user.username if article.user %></td>
+          <% if logged_in? && current_user == article.user %>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
+            <td> | </td>
+            <td style="text-align:center"> <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+          [ <%= link_to "Cancel request and return to articles listing", articles_path %> ]
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% obj.each do |article| %>
+        <tr>
+          <td><%= link_to article.title, article %></td>
+          <td style="overflow: hidden; text-overflow: ellipsis;"><%= article.description %></td>
+          <td>Created by: <%= article.user.username if article.user %></td>
+          <% if logged_in? && current_user == article.user %>
+          <td><%= link_to 'Edit', edit_article_path(article) %></td>
+          <td> | </td>
+          <td style="text-align:center"> <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
       <% end %>
     <% end %>
-  </table>
-
+  <% end %>
+</table>
 <button class="btn btn-outline-primary btn-md"><%= link_to 'New Article', new_article_path %></button>
