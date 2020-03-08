@@ -18,11 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   def search_results
+    @input = params[:q].downcase
     unless params[:q].nil? || params[:q].empty?
       @results = []
       Article.all.each do |article|
-        @results << article if article.title.downcase.include?(params[:q]) ||
-           article.description.downcase.include?(params[:q])
+        @results << article if article.title.downcase.include?(@input) ||
+           article.description.downcase.include?(@input)
        end
        @results
     else
