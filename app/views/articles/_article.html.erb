@@ -15,9 +15,7 @@
     <th scope="col">Title</th>
     <th scope="col">Description</th>
   </tr>
-    <% if @search_value %>
       <% obj.each do |article| %>
-        <% if article.title.include?(@search_value) || article.description.include?(@search_value) %>
         <tr>
           <td><%= link_to article.title, article %></td>
           <td style="overflow: hidden; text-overflow: ellipsis;"><%= article.description %></td>
@@ -27,23 +25,7 @@
             <td> | </td>
             <td style="text-align:center"> <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
           </tr>
-          [ <%= link_to "Cancel request and return to articles listing", articles_path %> ]
           <% end %>
         <% end %>
-      <% end %>
-    <% else %>
-      <% obj.each do |article| %>
-        <tr>
-          <td><%= link_to article.title, article %></td>
-          <td style="overflow: hidden; text-overflow: ellipsis;"><%= article.description %></td>
-          <td>Created by: <%= article.user.username if article.user %></td>
-          <% if logged_in? && current_user == article.user %>
-          <td><%= link_to 'Edit', edit_article_path(article) %></td>
-          <td> | </td>
-          <td style="text-align:center"> <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  <% end %>
 </table>
 <button class="btn btn-outline-primary btn-md"><%= link_to 'New Article', new_article_path %></button>
