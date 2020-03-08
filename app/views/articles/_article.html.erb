@@ -4,7 +4,7 @@
     <form class="form-inline my-2 my-lg-0">
       <%= form_with(url: articles_path, method: "get") do %>
         <%= label_tag(:q, "Search Articles") %>
-        <%= text_field_tag(:q) %>
+        <%= search_field_tag(:q) %>
         <%= submit_tag("Search") %>
       <% end %>
   </div>
