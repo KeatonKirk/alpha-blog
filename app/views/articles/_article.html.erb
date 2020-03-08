@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0">
-      <%= form_with(url: articles_path, method: "get", class: "form-inline my-2 my-lg-0") do %>
+      <%= form_with(url: articles_path, method: "get", class: "form-control mr-sm-2", type: "search") do %>
         <%= label_tag(:q, "Search Articles") %>
         <%= text_field_tag(:q) %>
         <%= submit_tag("Search") %>
