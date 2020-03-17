@@ -19,6 +19,13 @@
         <h5 class="card-header"><%= link_to gravatar_for(user), user_path(user) %></h5>
         <p class="card-text"><%= link_to user.username, user_path(user) %></p>
         <small><%= pluralize(user.articles.count, "article") if user.articles %></small>
+        <div class="container">
+          <% if logged_in? && current_user.admin? %>
+          <%= link_to 'Delete User', user_path(user), method: :delete,
+              data: {confirm: 'Are you sure you want to delete the user and all their articles?'},
+              class: "card-link btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </div>
       </div>
     </div
   </div>
