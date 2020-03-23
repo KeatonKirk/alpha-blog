@@ -1,0 +1,16 @@
+<h1 align="center">Create New Category</h1>
+
+<%= render 'shared/errors', obj: @category %>
+
+  <%= form_for @category do |f| %>
+    <div class='form-group'>
+      <label for='title'></label>
+      <%= f.text_field :name, class: "form-control", id: "exampleFormControlInput1",
+                        placeholder: "Category Name" %>
+    </div>
+
+    <%= f.submit class: 'btn btn-primary btn-lg' %>
+  <% end %>
+  <div class='center' padding-top='50px'>
+    [ <%= link_to "Cancel request and return to articles listing", articles_path %> ]
+  </div>
