@@ -10,7 +10,9 @@
   </div>
 </nav>
 <nav class="pagination justify-content-center" >
-  <%= will_paginate %>
+  <div class="flickr_pagination">
+    <%= will_paginate %>
+  </div>
 </nav>
 <% search_results(User.all).each do |user| %>
   <div class="card-decks" align="center">
@@ -30,3 +32,8 @@
     </div
   </div>
 <% end %>
+<nav class="pagination justify-content-center" >
+  <div class="flickr_pagination">
+    <%= will_paginate %>
+  </div>
+</nav>
