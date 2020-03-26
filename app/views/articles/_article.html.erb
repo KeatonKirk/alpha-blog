@@ -1,15 +1,4 @@
 
-<nav class="navbar navbar-expand-lg navbar-light" align="center">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-group my-2 my-lg-0 ml-auto mr-auto">
-      <%= form_with(url: articles_path, method: "get", class: "form-control") do %>
-        <%= label_tag(:q, "Search Articles", class: "lead") %>
-        <%= search_field_tag(:q) %>
-        <%= submit_tag("Search", class: "btn btn-primary") %>
-      <% end %>
-  </div>
-</nav>
-
 <% obj.each do |article| %>
   <div class="card-decks" align="center">
     <div class="card border-dark mb-3" style="width: 35rem;" align="center">
