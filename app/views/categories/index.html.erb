@@ -1,12 +1,7 @@
 <h1 align="center">Listing all Categories</h1>
+<%= render 'shared/search' %>
 
-<nav class="pagination justify-content-center" >
-  <div class="digg_pagination">
-    <%= will_paginate %>
-  </div>
-</nav>
-
-<% @categories.each do |category| %>
+<% search_results(Category.all).each do |category| %>
   <div class="card-decks" align="center">
     <div class="card border-dark mb-3" style="width: 35rem;" align="center">
       <div class="card-body text-dark" align="center">

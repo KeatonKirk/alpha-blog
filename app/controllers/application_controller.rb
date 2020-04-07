@@ -26,12 +26,17 @@ class ApplicationController < ActionController::Base
           @results << user if user.username.downcase.include?(@input)
         end
        @results
-      else
+     elsif @articles
         obj.each do |article|
           @results << article if article.title.downcase.include?(@input) ||
                       article.description.downcase.include?(@input)
         end
          @results
+       else
+         obj.each do |category|
+           @results << category if category.name.downcase.include?(@input)
+         end
+        @results
       end
     else
       obj.paginate(page: params[:page], per_page: 5)
