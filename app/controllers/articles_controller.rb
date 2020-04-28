@@ -29,6 +29,9 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       flash[:success] = "Article was successfully updated!"
       redirect_to article_path(@article)
+    else
+      flash[:danger] = "Oops! Something went wrong with the edit."
+      redirect_to articles_path
     end
   end
 
