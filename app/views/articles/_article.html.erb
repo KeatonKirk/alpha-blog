@@ -4,6 +4,7 @@
     <div class="card border-dark mb-3" style="width: 35rem;" align="center">
       <div class="card-body text-dark" align="center">
         <h5 class="card-header"><%= link_to article.title, article_path(article) %></h5>
+        <%= render article.categories %>
         <p class="card-text text-truncate"><%= article.description %></p>
         <% if article.user %>
           <p>Created by: <%= link_to article.user.username, user_path(article.user) %></p>

@@ -28,8 +28,11 @@ class ApplicationController < ActionController::Base
        @results
      elsif @articles
         obj.each do |article|
+          ArticleCategory.find_by_article_id(article.id).nil? ? @category_name = "" :
+          @category_name = Category.find(ArticleCategory.find_by_article_id(article.id).category_id).name
           @results << article if article.title.downcase.include?(@input) ||
-                      article.description.downcase.include?(@input)
+                      article.description.downcase.include?(@input) ||
+                      @category_name.downcase.include?(@input)
         end
          @results
        else
