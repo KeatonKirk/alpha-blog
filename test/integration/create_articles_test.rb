@@ -5,7 +5,7 @@ class CreateArticlesTest < ActionDispatch::IntegrationTest
   def setup
     @user = User.create(username: "john", email: "john@example.com",
             password: "password", admin: true)
-    @category = Category.create(name: "Test")
+    @category_ids = [Category.create(name: "Test").id, Category.create(name: "Test_2").id]
   end
 
   test "get new article form and create article" do
@@ -21,9 +21,9 @@ class CreateArticlesTest < ActionDispatch::IntegrationTest
 
   test "create new article with category" do
     sign_in_as(@user, "password")
-    assert_difference 'ArticleCategory.count', 1 do
+    assert_difference 'ArticleCategory.count', @category_ids.count do
       post articles_path, params: { article: {title: "New Article", description: "Test Description",
-            category_ids: @category.id}}
+            category_ids: @category_ids}}
       follow_redirect!
     end
   end

@@ -48,7 +48,7 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %>
-        <a class="dropdown-item" href="#">Another action</a>
+        <%= link_to "New Category", new_category_path, class: "dropdown-item" if current_user.admin? %>
         <div class="dropdown-divider"></div>
         <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
       </div>
