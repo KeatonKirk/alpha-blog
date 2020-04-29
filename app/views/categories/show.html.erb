@@ -1,5 +1,10 @@
 <h2 class="display-2" align="center"><%= "Category: " + @category.name %></h2>
 <%= render 'shared/search' %>
+<div align="center">
+  <% if logged_in? && (current_user.admin?) %>
+    <%= link_to 'Edit Category', edit_category_path(@category), class: "card-link btn btn-med btn-secondary"%>
+  <% end %>
+</div>
 <%= render 'articles/article', obj: search_results(@category_articles) %>
 <br>
 <br>
